@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Caveat";
+  src: url("../fonts/Caveat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CaveatBold";
+  src: url("../fonts/Caveat-Bold.ttf");
+}
+
+@font-face {
+  font-family: "GillSans";
+  src: url("../fonts/GillSans.ttf");
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "LatoBlack";
+  src: url("../fonts/Lato-Black.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 16px;
+}
+
+.contentWrap {
+  max-width: $site-width;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+
+  .hide {
+    display: none;
+  }
+}
+
+#app {
+  min-height: 100vh;
+  //padding-bottom: 70px;
+}
+
+@media (max-width: $phone-width) {
+  #app {
+    padding-bottom: 80px;
+  }
+}

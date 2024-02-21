@@ -1,0 +1,109 @@
+.formHolder {
+  max-width: 900px;
+  padding: 20px 0 70px 0;
+  margin: 100px auto 0 auto;
+
+  h1 {
+    font-family: "Caveat", Arial, Helvetica, sans-serif;
+  }
+
+  h3 {
+    font-family: "LatoBlack";
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 50px;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 20px 0 0 2px;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    font-weight: 100;
+  }
+
+  .formTop,
+  .formIngredients,
+  .formInstructions {
+    position: relative;
+  }
+
+  .formTop .imageBtn {
+    width: 90px;
+    height: 30px;
+    background-color: $site-blush;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 0;
+    font-family: "Caveat", Arial, Helvetica, sans-serif;
+  }
+
+  .formIngredients {
+    margin: 100px 0;
+  }
+
+  .submitBtn {
+    width: 300px;
+    height: 50px;
+    background-color: $site-blush;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "Caveat", Arial, Helvetica, sans-serif;
+    font-size: 25px;
+  }
+
+  .plusBtn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: $site-blush;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .formHolder {
+    padding: 20px 20px 70px 20px;
+
+    h1 {
+      text-align: right;
+    }
+  }
+}
+
+@media (max-width: $phone-width) {
+  .formHolder {
+    padding: 20px 20px 80px 20px;
+
+    h1 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+
+    input {
+      font-size: 14px;
+    }
+  }
+}

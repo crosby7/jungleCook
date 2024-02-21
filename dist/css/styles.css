@@ -1,0 +1,971 @@
+@font-face {
+  font-family: "Caveat";
+  src: url("../fonts/Caveat-Regular.ttf");
+}
+@font-face {
+  font-family: "CaveatBold";
+  src: url("../fonts/Caveat-Bold.ttf");
+}
+@font-face {
+  font-family: "GillSans";
+  src: url("../fonts/GillSans.ttf");
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato-Regular.ttf");
+}
+@font-face {
+  font-family: "LatoBlack";
+  src: url("../fonts/Lato-Black.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 16px;
+}
+
+.contentWrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+}
+.contentWrap .hide {
+  display: none;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+@media (max-width: 360px) {
+  #app {
+    padding-bottom: 80px;
+  }
+}
+#navHolder {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100px;
+  padding: 0 20px;
+  z-index: 90;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+}
+#navHolder ul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#navHolder ul li {
+  margin-left: 10px;
+  padding: 5px;
+}
+#navHolder ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: 500;
+}
+#navHolder ul .login {
+  width: 158px;
+  height: 40px;
+  background-color: #FFD972;
+  border: 2px solid #FFD972;
+  border-radius: 20px;
+  filter: drop-shadow(0 10px rgba(0, 0, 0, 0.8));
+}
+#navHolder ul .login a {
+  text-align: center;
+  display: block;
+}
+#navHolder .hamburger {
+  display: none;
+  cursor: pointer;
+}
+#navHolder .hamburger div {
+  width: 35px;
+  height: 3px;
+  background-color: black;
+  margin: 6px 0;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+#navHolder .hide {
+  display: none;
+}
+#navHolder .mobileMenu {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  height: calc(100vh - 100px);
+  width: 100%;
+  background-color: #FCBCB8;
+}
+#navHolder .mobileMenu li {
+  margin-bottom: 10px;
+  padding: 40px;
+  border-bottom: 2px solid black;
+  border-radius: 20px;
+}
+#navHolder .open .mobileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#navHolder li:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
+.open .bar1 {
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+.open .bar2 {
+  opacity: 0;
+}
+.open .bar3 {
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-style: italic;
+}
+.footer .mobileFooter {
+  display: none;
+}
+.footer #mobileLinks,
+.footer #smallLinks {
+  display: none;
+}
+.footer .links {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer .links a {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.copy {
+  font-style: italic;
+  font-size: 15px;
+}
+
+.socials {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.socials a img {
+  width: 20px;
+  height: 20px;
+}
+
+.modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal .modalContent {
+  z-index: 99;
+  background-color: white;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+.modal .modalContent h1 {
+  font-size: 30px;
+  text-align: center;
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+}
+.modal .modalContent .loader {
+  border-top: 16px solid #FCBCB8;
+  border-bottom: 16px solid #FFD972;
+  border-right: 16px solid #A7E8BD;
+  border-left: 16px solid #F25C54;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.modal .modalContent .cancelBtn {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #A7E8BD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.modal .modalContent .modalContainer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.modal .modalContent .modalContainer .cancelDelete {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #A7E8BD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.modal .modalContent .modalContainer .confirmDelete {
+  width: 100px;
+  height: 50px;
+  border: 2px solid #F25C54;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #F25C54;
+  color: white;
+  text-align: center;
+}
+
+.viewRecipe {
+  position: absolute;
+  background-color: white;
+  padding-top: 100px;
+  z-index: 85;
+  top: 0;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.viewRecipe h3 {
+  font-size: 25px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+}
+.viewRecipe .mainView {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.viewRecipe .mainView .mainImg {
+  width: 460px;
+  height: 420px;
+  margin-right: 100px;
+  position: relative;
+}
+.viewRecipe .mainView .mainImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.viewRecipe .mainView .mainImg .recipeNameView {
+  font-size: 25px;
+  width: 420px;
+  height: 33px;
+  position: absolute;
+  left: -230px;
+  top: 180px;
+  bottom: 0;
+  text-align: center;
+  transform: rotate(-90deg);
+  letter-spacing: 1px;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+}
+.viewRecipe .mainView .mainInfo {
+  width: 460px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.viewRecipe .mainView .mainInfo h3 {
+  margin-bottom: 10px;
+}
+.viewRecipe .mainView .mainInfo h4 {
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+}
+.viewRecipe .mainView .mainInfo p {
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+.viewRecipe .listView {
+  width: 1000px;
+}
+.viewRecipe .listView li {
+  margin-bottom: 0;
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+.viewRecipe .listView ul {
+  list-style: none;
+}
+.viewRecipe .editContainer {
+  width: 1000px;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 1100px) {
+  .footer .links {
+    width: 500px;
+  }
+  .socials {
+    width: 60px;
+  }
+  .socials a {
+    margin-left: 5px;
+  }
+  .viewRecipe .mainView {
+    flex-direction: column;
+    max-width: 460px;
+  }
+  .viewRecipe .mainView .mainImg {
+    margin-bottom: 40px;
+    margin-right: 0;
+  }
+  .viewRecipe .listView {
+    width: 90%;
+  }
+  .viewRecipe .editContainer {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+  #navHolder .hamburger {
+    display: block;
+  }
+  #navHolder ul .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer .links {
+    width: 400px;
+  }
+  .footer .links a {
+    font-size: 10px;
+  }
+  .copy {
+    font-size: 10px;
+  }
+}
+@media (max-width: 550px) {
+  .footer .links {
+    width: 350px;
+  }
+  .footer .links a {
+    font-size: 9px;
+  }
+  .copy {
+    font-size: 9px;
+  }
+  .viewRecipe h3 {
+    font-size: 20px;
+  }
+  .viewRecipe .mainView {
+    width: 90%;
+  }
+  .viewRecipe .mainView .mainImg {
+    width: 220px;
+    height: 200px;
+  }
+  .viewRecipe .mainView .mainImg .recipeNameView {
+    font-size: 20px;
+    top: 90px;
+    left: -220px;
+  }
+  .viewRecipe .mainView .mainInfo {
+    width: 100%;
+    height: 250px;
+  }
+  .viewRecipe .mainView .mainInfo h4 {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  .viewRecipe .mainView .mainInfo p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  .viewRecipe .listView p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 360px) {
+  .footer {
+    height: 80px;
+    display: block;
+  }
+  .footer .mobileFooter {
+    width: 100%;
+    margin: 0 auto 16px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer .mobileFooter .copy {
+    display: inline;
+  }
+  .footer .mobileFooter .socials {
+    display: flex;
+  }
+  .footer .mobileLinks {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .footer .mobileLinks a {
+    font-size: 10px;
+    margin-right: 10px;
+  }
+  .footer #mobileLinks {
+    display: flex;
+  }
+  .footer #smallLinks {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+  }
+  .footer .copy {
+    display: none;
+  }
+  .footer .desktopLinks {
+    display: none;
+  }
+  .footer .socials {
+    display: none;
+  }
+}
+.homePage {
+  max-width: 1280px;
+  min-height: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+  background: url("../images/hero.jpg"), linear-gradient(to left, #F25C54 60%, #F25C54 60%);
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+.homePage .circles {
+  width: 450px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+.homePage .circles .circle1 {
+  width: 360px;
+  height: 360px;
+  background-color: #FFD972;
+  border: 1px solid #FFD972;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 90;
+  margin-top: 70px;
+}
+.homePage .circles .circle1 h1 {
+  font-size: 24px;
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+}
+.homePage .circles .circle1 p {
+  font-size: 14px;
+  width: 150px;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+.homePage .circles .circle2 {
+  width: 160px;
+  height: 160px;
+  background-color: #FCBCB8;
+  border: 1px solid #FCBCB8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 40px;
+  z-index: 10;
+}
+.homePage .circles .circle2 p {
+  font-style: italic;
+  font-size: 12px;
+  width: 110px;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-style: italic;
+}
+
+@media (max-width: 360px) {
+  .homePage .circles {
+    width: 280px;
+  }
+  .homePage .circles .circle1 {
+    width: 260px;
+    height: 260px;
+  }
+  .homePage .circles .circle1 h1 {
+    font-size: 20px;
+  }
+  .homePage .circles .circle1 p {
+    width: 120px;
+    font-size: 10px;
+  }
+  .homePage .circles .circle2 {
+    width: 120px;
+    height: 120px;
+    right: 20px;
+  }
+  .homePage .circles .circle2 p {
+    width: 90px;
+    font-size: 9px;
+  }
+}
+.browsePage {
+  max-width: 1280px;
+  padding: 20px 0 70px 0;
+  margin: 0 auto;
+  background: url("../images/recipe-hero.jpg"), linear-gradient(to left, #A7E8BD 100%, #A7E8BD 100%);
+  background-blend-mode: multiply, overlay;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.browsePage .browseHeader {
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-top: 130px;
+  margin-left: 80px;
+}
+.browsePage .cardHolder {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.browsePage .cardHolder #noRecipes {
+  width: 530px;
+  height: 270px;
+  margin-bottom: 30px;
+  border: 4px solid black;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.browsePage .cardHolder #noRecipes .createButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  border: 2px solid black;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.browsePage .cardHolder #noRecipes h3 {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+}
+.browsePage .cardHolder .recipeCard {
+  max-width: 530px;
+  height: 330px;
+  margin-bottom: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.browsePage .cardHolder .recipeCard .viewBtn {
+  position: absolute;
+  top: calc(50% - 22px);
+  left: 85px;
+}
+.browsePage .cardHolder .recipeCard .offCardBtns {
+  width: 300px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.browsePage .cardHolder .recipeCard .cardImage {
+  width: 300px;
+  height: 270px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.browsePage .cardHolder .recipeCard .cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.browsePage .cardHolder .recipeCard .cardInfo {
+  width: 230px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 270px;
+  border-radius: 15px;
+  padding: 25px 0;
+}
+.browsePage .cardHolder .recipeCard .cardInfo h3 {
+  font-size: 20px;
+  margin: 0;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+  border-bottom: 2px solid black;
+}
+.browsePage .cardHolder .recipeCard .cardInfo p {
+  width: 60%;
+  font-size: 10px;
+  margin: 0;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+.browsePage .cardHolder .recipeCard .cardInfo .cardDetails {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.browsePage .cardHolder .recipeCard .cardInfo .cardDetails img {
+  width: 25px;
+  height: 25px;
+}
+.browsePage .cardHolder .recipeCard .cardInfo .cardDetails p {
+  width: 46px;
+  margin: 0 0 0 15px;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.recipesBtn {
+  width: 130px;
+  height: 42px;
+  background-color: #FFD972;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 560px) {
+  .browsePage .browseHeader {
+    font-size: 30px;
+    margin-left: 20px;
+  }
+  .browsePage .cardHolder #noRecipes {
+    max-width: 90%;
+  }
+  .browsePage .cardHolder .recipeCard {
+    flex-direction: column;
+    max-width: 90%;
+    height: 500px;
+  }
+  .browsePage .cardHolder .recipeCard .viewBtn {
+    left: calc(50% - 65px);
+    top: 20%;
+  }
+  .browsePage .cardHolder .recipeCard .offCardBtns {
+    width: 100%;
+  }
+  .browsePage .cardHolder .recipeCard .cardImage {
+    width: 100%;
+    height: 250px;
+  }
+  .browsePage .cardHolder .recipeCard .cardInfo {
+    width: 100%;
+    height: 250px;
+  }
+  .browsePage .cardHolder .recipeCard .cardInfo h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  .browsePage .cardHolder .recipeCard .cardInfo p {
+    margin-bottom: 5px;
+  }
+  .browsePage .cardHolder .recipeCard .cardInfo .cardDetails {
+    margin-bottom: 10px;
+  }
+}
+.loginPage {
+  max-width: 1280px;
+  min-height: 800px;
+  margin: 0 auto;
+  background-color: #FFD972;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.loginPage .loginSection {
+  width: 206px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.loginPage .signUpSection {
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.loginPage .signUpText {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.loginPage .signUpText p {
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-style: italic;
+}
+.loginPage h1 {
+  width: 100%;
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-family: "LatoBlack", Arial, Helvetica, sans-serif;
+}
+.loginPage input {
+  width: 100%;
+  font-size: 12px;
+  margin-bottom: 50px;
+  border: none;
+  background: none;
+  color: black;
+  border-bottom: 3px solid black;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+.loginPage p {
+  font-style: italic;
+  margin-bottom: 0;
+}
+.loginPage .button {
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFD972;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 8px rgba(0, 0, 0, 0.6));
+}
+.loginPage .button a {
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .loginPage {
+    flex-direction: column;
+    padding-bottom: 170px;
+  }
+  .loginPage .loginSection {
+    height: 160px;
+  }
+  .loginPage .signUpSection {
+    height: 180px;
+  }
+  .loginPage h1 {
+    margin-bottom: 30px;
+  }
+  .loginPage input {
+    margin-bottom: 30px;
+  }
+}
+.formHolder {
+  max-width: 900px;
+  padding: 20px 0 70px 0;
+  margin: 100px auto 0 auto;
+}
+.formHolder h1 {
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+}
+.formHolder h3 {
+  font-family: "LatoBlack";
+}
+.formHolder input {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 50px;
+  border: none;
+  border-bottom: 2px solid black;
+  padding: 20px 0 0 2px;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-weight: 100;
+}
+.formHolder .formTop,
+.formHolder .formIngredients,
+.formHolder .formInstructions {
+  position: relative;
+}
+.formHolder .formTop .imageBtn {
+  width: 90px;
+  height: 30px;
+  background-color: #EFA7A7;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: pointer;
+  top: 15px;
+  right: 0;
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+}
+.formHolder .formIngredients {
+  margin: 100px 0;
+}
+.formHolder .submitBtn {
+  width: 300px;
+  height: 50px;
+  background-color: #EFA7A7;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Caveat", Arial, Helvetica, sans-serif;
+  font-size: 25px;
+}
+.formHolder .plusBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #EFA7A7;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .formHolder {
+    padding: 20px 20px 70px 20px;
+  }
+  .formHolder h1 {
+    text-align: right;
+  }
+}
+@media (max-width: 360px) {
+  .formHolder {
+    padding: 20px 20px 80px 20px;
+  }
+  .formHolder h1 {
+    font-size: 20px;
+  }
+  .formHolder h3 {
+    font-size: 16px;
+  }
+  .formHolder input {
+    font-size: 14px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
