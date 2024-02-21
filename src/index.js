@@ -28,8 +28,14 @@ onAuthStateChanged(auth, (user) => {
             element.innerHTML = 'Logout';
         });
 
-        userName = auth.currentUser.displayName;
-        console.log("username in auth: " + userName);
+        if (userName == null)
+        {
+            if (user.displayName != null)
+            {
+                userName = user.displayName;
+                console.log("username in auth: " + userName);
+            }
+        }
     } 
     else 
     {
@@ -111,7 +117,7 @@ export function initRecipesListeners() {
 }
 
 export function accountHandler(pageID) {
-    console.log(auth.currentUserser);
+    console.log("account handler: ", auth.currentUser);
     if (pageID === 'loginPage')
     {
         if (loginNav[0].innerHTML === 'Logout')
@@ -144,6 +150,7 @@ export function accountHandler(pageID) {
         .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
+        userName = firstName;
 
         updateProfile(auth.currentUser, {
             displayName: firstName

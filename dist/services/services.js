@@ -115,6 +115,7 @@ function preparePage() {
     let createHeader = document.getElementById("createHeader");
     if (userName != null && userName != undefined)
     {
+        console.log(userName);
         createHeader.innerHTML = `Hey ${userName}, create your recipe today!`;
     }
     else
